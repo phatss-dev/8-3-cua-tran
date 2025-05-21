@@ -1,9 +1,9 @@
-(function () {
+window.onload = function () {
   const canvas = document.getElementById("canvas");
   const mainDiv = document.getElementById("main");
   const nameForm = document.getElementById("name-form");
 
-  // Ẩn phần nhập tên và hiển thị vùng chính
+  // Ẩn form, hiện canvas
   nameForm.style.display = "none";
   canvas.style.display = "block";
   mainDiv.style.display = "block";
@@ -15,13 +15,13 @@
     "flower/flower4.png"
   ];
 
-  // Chờ 3 giây rồi tự gieo
+  // Sau 3 giây, tự gieo hạt
   setTimeout(() => {
     const tree = new LoveTree(canvas, imageList, function () {
       tree.plant(30);
       tree.startFalling();
 
-      // Hiển thị thư
+      // Sau 2.5s hiện thư
       setTimeout(() => {
         const letterBox = document.getElementById("letter-box");
         letterBox.classList.add("show");
@@ -36,5 +36,5 @@
         ], 0, 80);
       }, 2500);
     });
-  }, 3000); // 3 giây
-})();
+  }, 3000);
+};
