@@ -1,5 +1,5 @@
 (function () {
-  const validNames = ["Phát", "Trân"]; // chỉnh theo tên cặp đôi bạn muốn
+  const validNames = ["Phát", "Trân"]; // Đổi tên tùy ý
 
   function normalize(str) {
     return str.trim().toLowerCase();
@@ -8,9 +8,12 @@
   const plantButton = document.getElementById("plantButton");
   const nameForm = document.getElementById("name-form");
   const canvas = document.getElementById("canvas");
+  const mainDiv = document.getElementById("main");
   const errorMsg = document.getElementById("error-msg");
 
-  plantButton.addEventListener("click", function () {
+  plantButton.addEventListener("click", function (event) {
+    event.preventDefault(); // Ngăn trang bị reload khi bấm nút
+
     const name1 = normalize(document.getElementById("name1").value);
     const name2 = normalize(document.getElementById("name2").value);
 
@@ -21,7 +24,7 @@
     ) {
       nameForm.style.display = "none";
       canvas.style.display = "block";
-
+      mainDiv.style.display = "block";
       startTreeAnimation();
     } else {
       errorMsg.textContent = "Tên không đúng hoặc trùng nhau. Thử lại nhé!";
