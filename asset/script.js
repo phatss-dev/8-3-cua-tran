@@ -5,12 +5,11 @@
   const mainDiv = document.getElementById("main");
 
   plantButton.addEventListener("click", function (event) {
-    event.preventDefault(); // Ngăn reload khi bấm nút
+    event.preventDefault();
     nameForm.style.display = "none";
     canvas.style.display = "block";
     mainDiv.style.display = "block";
 
-    // Khởi động LoveTree sau khi bấm nút
     const imageList = [
       "flower/flower1.png",
       "flower/flower2.png",
@@ -19,7 +18,21 @@
     ];
 
     const tree = new LoveTree(canvas, imageList, function () {
-      tree.plant(30); // Trồng 30 bông hoa
+      tree.plant(30); // số hoa
+
+      setTimeout(() => {
+        const letterBox = document.getElementById("letter-box");
+        letterBox.classList.add("show");
+
+        typewriter("letter-content", [
+          "Gửi bạn thân mến,",
+          "",
+          "Chúc bạn mãi hạnh phúc, luôn cười thật tươi.",
+          "Cảm ơn vì đã là một phần trong thế giới của mình!",
+          "",
+          "-- Một ai đó rất quan tâm bạn --"
+        ], 0, 80);
+      }, 2500);
     });
   });
 })();
