@@ -1,27 +1,27 @@
-
 (function () {
-  const plantButton = document.getElementById("plantButton");
-  const nameForm = document.getElementById("name-form");
   const canvas = document.getElementById("canvas");
   const mainDiv = document.getElementById("main");
+  const nameForm = document.getElementById("name-form");
 
-  plantButton.addEventListener("click", function (event) {
-    event.preventDefault();
-    nameForm.style.display = "none";
-    canvas.style.display = "block";
-    mainDiv.style.display = "block";
+  // Ẩn phần nhập tên và hiển thị vùng chính
+  nameForm.style.display = "none";
+  canvas.style.display = "block";
+  mainDiv.style.display = "block";
 
-    const imageList = [
-      "flower/flower1.png",
-      "flower/flower2.png",
-      "flower/flower3.png",
-      "flower/flower4.png"
-    ];
+  const imageList = [
+    "flower/flower1.png",
+    "flower/flower2.png",
+    "flower/flower3.png",
+    "flower/flower4.png"
+  ];
 
+  // Chờ 3 giây rồi tự gieo
+  setTimeout(() => {
     const tree = new LoveTree(canvas, imageList, function () {
       tree.plant(30);
       tree.startFalling();
 
+      // Hiển thị thư
       setTimeout(() => {
         const letterBox = document.getElementById("letter-box");
         letterBox.classList.add("show");
@@ -36,5 +36,5 @@
         ], 0, 80);
       }, 2500);
     });
-  });
+  }, 3000); // 3 giây
 })();
