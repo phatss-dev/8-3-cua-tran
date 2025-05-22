@@ -1,29 +1,22 @@
 function startLoveTree() {
-  const name1 = document.getElementById("name1").value.toLowerCase();
-  const name2 = document.getElementById("name2").value.toLowerCase();
+  document.getElementById("person1").style.display = "block";
+  document.getElementById("person2").style.display = "block";
 
-  if (name1.includes("phát") && name2.includes("trân")) {
-    document.getElementById("person1").style.display = "block";
-    document.getElementById("person2").style.display = "block";
+  setTimeout(() => {
+    document.getElementById("seed").style.display = "block";
+  }, 2000);
 
-    setTimeout(() => {
-      document.getElementById("seed").style.display = "block";
-    }, 2000);
+  setTimeout(() => {
+    document.getElementById("tree").style.display = "block";
+    document.getElementById("bg-music").play();
+  }, 4000);
 
-    setTimeout(() => {
-      document.getElementById("tree").style.display = "block";
-      document.getElementById("bg-music").play();
-    }, 4000);
+  setTimeout(() => {
+    document.getElementById("letter").style.display = "block";
+  }, 6500);
 
-    setTimeout(() => {
-      document.getElementById("letter").style.display = "block";
-    }, 6500);
-
-    startHeartRain();
-    spawnGifts();
-  } else {
-    alert("Tên không đúng!");
-  }
+  startHeartRain();
+  createGiftBoxes();
 }
 
 function startHeartRain() {
@@ -37,29 +30,30 @@ function startHeartRain() {
   }, 200);
 }
 
-function spawnGifts() {
-  const giftPositions = [10, 30, 50, 70, 90];
-  giftPositions.forEach(pos => {
-    const gift = document.createElement("div");
-    gift.className = "gift-effect";
-    gift.style.left = pos + "vw";
-    gift.style.top = Math.random() * 300 + "px";
+function createGiftBoxes() {
+  const gifts = [
+    { img: "images/img1.jpg", text: "Khoảnh khắc dễ thương" },
+    { img: "images/img2.jpg", text: "Nụ cười của em" },
+    { img: "images/img3.jpg", text: "Kỷ niệm đáng nhớ" }
+  ];
 
-    gift.innerHTML = \`
+  gifts.forEach((gift, index) => {
+    const giftBox = document.createElement("div");
+    giftBox.className = "gift-box";
+    giftBox.style.left = `${20 + index * 30}vw`;
+
+    giftBox.innerHTML = `
       <div class="gift-lid"></div>
-      <div class="gift-box"></div>
       <div class="gift-content">
-        <img src="images/img_\${pos}.jpg" width="100" /><br>
-        <small>Khoảnh khắc đáng nhớ</small>
+        <img src="${gift.img}" alt="gift-img" />
+        <small>${gift.text}</small>
       </div>
-    \`;
+    `;
 
-    gift.onclick = () => {
-      gift.classList.toggle("open");
-      const content = gift.querySelector(".gift-content");
-      content.style.display = content.style.display === "block" ? "none" : "block";
+    giftBox.onclick = () => {
+      giftBox.classList.toggle("open");
     };
 
-    document.getElementById("animation-area").appendChild(gift);
+    document.getElementById("animation-area").appendChild(giftBox);
   });
 }
