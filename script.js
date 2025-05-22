@@ -1,61 +1,65 @@
-function startLove() {
-  const boy = document.getElementById('boyName').value.trim();
-  const girl = document.getElementById('girlName').value.trim();
-  if (!boy || !girl) {
-    alert('Hãy nhập đủ tên hai người!');
-    return;
+function startLoveTree() {
+  const name1 = document.getElementById("name1").value.toLowerCase();
+  const name2 = document.getElementById("name2").value.toLowerCase();
+
+  if (name1.includes("phát") && name2.includes("trân")) {
+    document.getElementById("person1").style.display = "block";
+    document.getElementById("person2").style.display = "block";
+
+    setTimeout(() => {
+      document.getElementById("seed").style.display = "block";
+    }, 2000);
+
+    setTimeout(() => {
+      document.getElementById("tree").style.display = "block";
+      document.getElementById("bg-music").play();
+    }, 4000);
+
+    setTimeout(() => {
+      document.getElementById("letter").style.display = "block";
+    }, 6500);
+
+    startHeartRain();
+    spawnGifts();
+  } else {
+    alert("Tên không đúng!");
   }
-
-  document.getElementById('person1').textContent = boy;
-  document.getElementById('person2').textContent = girl;
-
-  document.getElementById('person1').classList.remove('hidden');
-  document.getElementById('person2').classList.remove('hidden');
-
-  setTimeout(() => {
-    document.getElementById('seed').classList.remove('hidden');
-  }, 1000);
-
-  setTimeout(() => {
-    document.getElementById('tree').classList.remove('hidden');
-    document.getElementById('bgMusic').play();
-  }, 3000);
-
-  setTimeout(() => {
-    document.getElementById('loveLetter').classList.remove('hidden');
-  }, 5000);
-
-  setTimeout(() => {
-    showGifts();
-  }, 6000);
 }
 
-function showGifts() {
-  const giftArea = document.getElementById('giftArea');
-  const gifts = [
-    { img: 'images/image1.jpg', text: 'Khoảnh khắc đầu tiên' },
-    { img: 'images/image2.jpg', text: 'Nụ cười đáng yêu' },
-    { img: 'images/image3.jpg', text: 'Ngày hạnh phúc' }
-  ];
+function startHeartRain() {
+  const interval = setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart-rain";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 2 + Math.random() * 3 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => document.body.removeChild(heart), 5000);
+  }, 200);
+}
 
-  gifts.forEach((gift) => {
-    const giftBox = document.createElement('div');
-    giftBox.className = 'gift-box';
+function spawnGifts() {
+  const giftPositions = [10, 30, 50, 70, 90];
+  giftPositions.forEach(pos => {
+    const gift = document.createElement("div");
+    gift.className = "gift-effect";
+    gift.style.left = pos + "vw";
+    gift.style.top = Math.random() * 300 + "px";
 
-    const giftEffect = document.createElement('div');
-    giftEffect.className = 'gift-effect';
-    giftEffect.innerHTML = `<div class="gift-lid"></div><div class="gift-box"></div>`;
+    gift.innerHTML = \`
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+      <div class="gift-content">
+        <img src="images/img_\${pos}.jpg" width="100" /><br>
+        <small>Khoảnh khắc đáng nhớ</small>
+      </div>
+    \`;
 
-    const content = document.createElement('div');
-    content.className = 'gift-content';
-    content.innerHTML = `<img src="${gift.img}" width="100%" /><p>${gift.text}</p>`;
-
-    giftEffect.onclick = () => {
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    gift.onclick = () => {
+      gift.classList.toggle("open");
+      const content = gift.querySelector(".gift-content");
+      content.style.display = content.style.display === "block" ? "none" : "block";
     };
 
-    giftBox.appendChild(giftEffect);
-    giftBox.appendChild(content);
-    giftArea.appendChild(giftBox);
+    document.getElementById("animation-area").appendChild(gift);
   });
 }
