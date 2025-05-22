@@ -12,16 +12,21 @@
       <input id="girlName" placeholder="Tên bạn nữ" />
       <button onclick="startLove()">Gieo hạt</button>
     </div>
-    
+
     <div id="scene">
-      <img id="person1" class="character hidden" src="images/person1.png" />
-      <img id="person2" class="character hidden" src="images/person2.png" />
-      <img id="seed" class="seed hidden" src="images/hatgiong.png" />
-      <div id="tree" class="tree hidden"></div>
+      <div id="person1" class="character hidden">Nam</div>
+      <div id="person2" class="character hidden">Nữ</div>
+      <div id="seed" class="seed hidden"></div>
+      <div id="tree" class="tree hidden">
+        <div class="trunk"></div>
+        <div class="branch left"></div>
+        <div class="branch right"></div>
+        <div class="heart"></div>
+      </div>
     </div>
 
     <div class="letter hidden" id="loveLetter">
-      <img src="images/letter.png" class="letter-img" />
+      <div class="letter-img"></div>
       <div class="letter-text">
         Anh biết có rất nhiều lần anh làm em buồn hay không quan tâm em.
         Nhưng sau những lần ấy em vẫn tha thứ cho anh.  
