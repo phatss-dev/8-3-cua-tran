@@ -2,44 +2,50 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cây Tình Yêu</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <div class="input-names">
-      <input id="boyName" placeholder="Tên bạn nam" />
-      <input id="girlName" placeholder="Tên bạn nữ" />
-      <button onclick="startLove()">Gieo hạt</button>
+    <div class="input-area">
+      <input type="text" id="name1" placeholder="Tên bạn nam"/>
+      <input type="text" id="name2" placeholder="Tên bạn nữ"/>
+      <button onclick="start()">Gieo Hạt</button>
     </div>
 
-    <div id="scene">
-      <div id="person1" class="character hidden">Nam</div>
-      <div id="person2" class="character hidden">Nữ</div>
-      <div id="seed" class="seed hidden"></div>
-      <div id="tree" class="tree hidden">
+    <div id="animation-area">
+      <div class="seed" id="seed"></div>
+      <div class="person left" id="person1"></div>
+      <div class="person right" id="person2"></div>
+
+      <div class="tree" id="tree">
         <div class="trunk"></div>
-        <div class="branch left"></div>
-        <div class="branch right"></div>
+        <div class="branch" style="left: -25px;"></div>
+        <div class="branch" style="right: -25px;"></div>
         <div class="heart"></div>
       </div>
-    </div>
 
-    <div class="letter hidden" id="loveLetter">
-      <div class="letter-img"></div>
-      <div class="letter-text">
-        Anh biết có rất nhiều lần anh làm em buồn hay không quan tâm em.
-        Nhưng sau những lần ấy em vẫn tha thứ cho anh.  
-        Anh không biết nói gì nữa. Nhưng mong em luôn nhớ rằng  
-        anh yêu em yêu em rất rất rất nhiều.
+      <div class="letter" id="letter">
+        <div class="envelope"></div>
+        <div class="message">
+          Anh biết có rất nhiều lần anh làm em buồn hay không quan tâm em. Nhưng sau những lần ấy em vẫn tha thứ cho anh.
+          Anh không biết nói gì nữa. Nhưng mong em luôn nhớ rằng anh yêu em yêu em rất rất rất nhiều.
+        </div>
+      </div>
+
+      <div class="gift-effect" id="giftEffect">
+        <div class="gift-lid"></div>
+        <div class="gift-box"></div>
+        <div class="gift-content" id="giftContent">
+          <img src="images/img1.jpg" alt="Gift Image" width="100" /><br/>
+          <p>Khoảnh khắc đáng yêu của chúng ta!</p>
+        </div>
       </div>
     </div>
-
-    <div class="gifts" id="giftArea"></div>
-
-    <audio id="bgMusic" src="music/co-doi-dieu.mp3"></audio>
   </div>
 
+  <audio id="bgm" src="music/co-doi-dieu.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
