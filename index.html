@@ -2,27 +2,37 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cây Tình Yêu</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="input-container">
-    <h2>Nhập tên hai người:</h2>
-    <input type="text" id="name1" placeholder="Tên bạn nam" />
-    <input type="text" id="name2" placeholder="Tên bạn nữ" />
-    <button onclick="startLoveTree()">Đăng nhập</button>
-  </div>
-
-  <canvas id="loveCanvas"></canvas>
-
-  <audio id="bg-music" src="music/co-doi-dieu.mp3"></audio>
-
-  <div id="letter" class="hidden">
-    <div class="envelope"></div>
-    <div class="letter-text">
-      Anh biết có rất nhiều lần anh làm em buồn hay không quan tâm em. Nhưng sau những lần ấy em vẫn tha thứ cho anh. Anh.... Không biết nói gì nữa. Nhưng mong em luôn nhớ rằng anh yêu em yêu em rất rất rất nhiều.
+  <div class="container">
+    <div class="input-names">
+      <input id="boyName" placeholder="Tên bạn nam" />
+      <input id="girlName" placeholder="Tên bạn nữ" />
+      <button onclick="startLove()">Gieo hạt</button>
     </div>
+    
+    <div id="scene">
+      <img id="person1" class="character hidden" src="images/person1.png" />
+      <img id="person2" class="character hidden" src="images/person2.png" />
+      <img id="seed" class="seed hidden" src="images/hatgiong.png" />
+      <div id="tree" class="tree hidden"></div>
+    </div>
+
+    <div class="letter hidden" id="loveLetter">
+      <img src="images/letter.png" class="letter-img" />
+      <div class="letter-text">
+        Anh biết có rất nhiều lần anh làm em buồn hay không quan tâm em.
+        Nhưng sau những lần ấy em vẫn tha thứ cho anh.  
+        Anh không biết nói gì nữa. Nhưng mong em luôn nhớ rằng  
+        anh yêu em yêu em rất rất rất nhiều.
+      </div>
+    </div>
+
+    <div class="gifts" id="giftArea"></div>
+
+    <audio id="bgMusic" src="music/co-doi-dieu.mp3"></audio>
   </div>
 
   <script src="script.js"></script>
