@@ -6,6 +6,9 @@ function startLove() {
     return;
   }
 
+  document.getElementById('person1').textContent = boy;
+  document.getElementById('person2').textContent = girl;
+
   document.getElementById('person1').classList.remove('hidden');
   document.getElementById('person2').classList.remove('hidden');
 
@@ -30,28 +33,29 @@ function startLove() {
 function showGifts() {
   const giftArea = document.getElementById('giftArea');
   const gifts = [
-    { img: 'images/image1.jpg', text: 'Kỷ niệm đầu tiên' },
-    { img: 'images/image2.jpg', text: 'Lúc em cười' },
-    { img: 'images/image3.jpg', text: 'Nhớ khoảnh khắc này' }
+    { img: 'images/image1.jpg', text: 'Khoảnh khắc đầu tiên' },
+    { img: 'images/image2.jpg', text: 'Nụ cười đáng yêu' },
+    { img: 'images/image3.jpg', text: 'Ngày hạnh phúc' }
   ];
 
-  gifts.forEach((gift, index) => {
+  gifts.forEach((gift) => {
     const giftBox = document.createElement('div');
     giftBox.className = 'gift-box';
 
-    const giftImg = document.createElement('img');
-    giftImg.src = `images/gift${index+1}.png`;
-    giftBox.appendChild(giftImg);
+    const giftEffect = document.createElement('div');
+    giftEffect.className = 'gift-effect';
+    giftEffect.innerHTML = `<div class="gift-lid"></div><div class="gift-box"></div>`;
 
     const content = document.createElement('div');
     content.className = 'gift-content';
     content.innerHTML = `<img src="${gift.img}" width="100%" /><p>${gift.text}</p>`;
-    giftBox.appendChild(content);
 
-    giftImg.onclick = () => {
+    giftEffect.onclick = () => {
       content.style.display = content.style.display === 'block' ? 'none' : 'block';
     };
 
+    giftBox.appendChild(giftEffect);
+    giftBox.appendChild(content);
     giftArea.appendChild(giftBox);
   });
 }
